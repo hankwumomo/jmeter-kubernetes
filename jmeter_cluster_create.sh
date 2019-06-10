@@ -17,32 +17,10 @@ kubectl version --short
 
 echo "Current list of namespaces on the kubernetes cluster:"
 
-echo
+tenant = "momotest"
 
-kubectl get namespaces | grep -v NAME | awk '{print $1}'
 
-echo
 
-echo "Enter the name of the new tenant unique name, this will be used to create the namespace"
-read tenant
-echo
-
-#Check If namespace exists
-
-kubectl get namespace $tenant > /dev/null 2>&1
-
-if [ $? -eq 0 ]
-then
-  echo "Namespace $tenant already exists, please select a unique name"
-  echo "Current list of namespaces on the kubernetes cluster"
-  sleep 2
-
- kubectl get namespaces | grep -v NAME | awk '{print $1}'
-  exit 1
-fi
-
-echo
-echo "Creating Namespace: $tenant"
 
 kubectl create namespace $tenant
 
