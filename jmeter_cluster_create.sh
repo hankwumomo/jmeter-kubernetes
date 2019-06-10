@@ -17,7 +17,7 @@ kubectl version --short
 
 echo "Current list of namespaces on the kubernetes cluster:"
 
-tenant = "momotest"
+tenant=momotest
 
 
 
